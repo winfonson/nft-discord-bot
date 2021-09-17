@@ -4,7 +4,7 @@ const { openseaAssetUrl } = require('../config.json');
 const Discord = require('discord.js');
 
 module.exports = {
-	name: process.env.DISCORD_TOKEN_COMMAND || "token",
+	name: "token",
 	execute(message, args) {
     return message.channel.send('fetching token');
     if (!args.length) {
