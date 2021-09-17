@@ -8,7 +8,7 @@ module.exports = {
 	execute(message, args) {
     //return message.channel.send('fetching token');
     if (!args.length) {
-      return message.channel.send(`${process.env.CONTRACT_ADDRESS} You didn't provide a token id, ${message.author}!`);
+      return message.channel.send(`You didn't provide a token id, ${message.author}!`);
     }
 
     if (isNaN(parseInt(args[0]))) {
@@ -31,7 +31,7 @@ module.exports = {
           }
           if (res.status != 200)
           {
-            throw new Error(`Couldn't retrieve metadata: ${res.statusText}`);
+            throw new Error(`Couldn't retrieve metadata using ${url}: ${res.statusText}`);
           }
           return res.json();
         })
