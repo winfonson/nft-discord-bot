@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: "token",
 	execute(message, args) {
-    return message.channel.send('fetching token');
+    //return message.channel.send('fetching token');
     if (!args.length) {
       return message.channel.send(`You didn't provide a token id, ${message.author}!`);
     }
