@@ -22,7 +22,7 @@ const fetchTokenId = async () => {
   }
   if (res.status != 200)
   {
-    throw new Error(`Couldn't retrieve metadata: ${res.statusText}`);
+    throw new Error(`Couldn't retrieve collection metadata: ${res.statusText}`);
   }
 
   let data = await res.json();
@@ -48,7 +48,7 @@ const fetchFloor = async () => {
   }
   if (res.status != 200)
   {
-    throw new Error(`Couldn't retrieve metadata: ${res.statusText}`);
+    throw new Error(`Couldn't retrieve token metadata: ${res.statusText}`);
   }
 
   let metadata = await res.json();
