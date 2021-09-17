@@ -4,7 +4,7 @@ const { openseaAssetUrl } = require('../config.json');
 const Discord = require('discord.js');
 
 module.exports = {
-	name: "token",
+	name: process.env.DISCORD_TOKEN_COMMAND || "token",
 	execute(message, args) {
     //return message.channel.send('fetching token');
     if (!args.length) {
@@ -17,10 +17,10 @@ module.exports = {
 
     let url = `${openseaAssetUrl}/${process.env.CONTRACT_ADDRESS}/${args[0]}`;
     let settings = { 
-      method: "GET"
-      // headers: {
-      //   "X-API-KEY": process.env.OPEN_SEA_API_KEY
-      // }
+      method: "GET",
+      headers: {
+        "X-API-KEY": process.env.OPEN_SEA_API_KEY
+      }
     };
     
     fetch(url, settings)
@@ -31,7 +31,7 @@ module.exports = {
           }
           if (res.status != 200)
           {
-            throw new Error(`Couldn't retrieve metadata using ${url}: ${res.statusText}`);
+            throw new Error(`Couldn't retrieve metadata ${res.statusText}`);
           }
           return res.json();
         })

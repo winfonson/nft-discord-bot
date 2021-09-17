@@ -22,7 +22,7 @@ const fetchTokenId = async () => {
   }
   if (res.status != 200)
   {
-    throw new Error(`Couldn't retrieve collection metadata for ${process.env.OPEN_SEA_COLLECTION_NAME}: ${res.status}, ${res.statusText}`);
+    throw new Error(`Couldn't retrieve collection metadata ${res.statusText}`);
   }
 
   let data = await res.json();
