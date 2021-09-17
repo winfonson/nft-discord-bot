@@ -22,7 +22,7 @@ const fetchTokenId = async () => {
   }
   if (res.status != 200)
   {
-    throw new Error(`Couldn't retrieve collection metadata: ${res.statusText}`);
+    throw new Error(`Couldn't retrieve collection metadata: ${res.status}, ${res.statusText}`);
   }
 
   let data = await res.json();
