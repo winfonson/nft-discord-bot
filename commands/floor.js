@@ -36,7 +36,7 @@ const fetchFloor = async () => {
   let url = `${openseaAssetUrl}/${process.env.CONTRACT_ADDRESS}/${tokenId}`;
   let settings = { 
     method: "GET",
-    headers: {
+    headers: {  
       "X-API-KEY": process.env.OPEN_SEA_API_KEY
     }
   };
