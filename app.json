@@ -8,7 +8,7 @@
     "discord",
     "opensea"
   ],
-  "repository": "https://github.com/lucid-eleven/nft-discord-bot",
+  "repository": "https://github.com/winfonson/nft-discord-bot",
   "env": {
     "CONTRACT_ADDRESS": {
       "description": "Ethereum address for the NFT Smart Contract",
