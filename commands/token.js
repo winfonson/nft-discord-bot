@@ -41,7 +41,7 @@ module.exports = {
               .setTitle(metadata.name)
               .setURL(metadata.permalink)
               .addField("Owner", metadata.owner.user?.username || metadata.owner.address.slice(0,8))
-              .addField("CurrentPrice", `${Number(metadata.orders[0].current_price || 0)*1e-18}Ξ`)
+              .addField("CurrentPrice", `${Number(metadata.orders[0] == undefined? 0 : metadata.orders[0].current_price || 0)*1e-18}Ξ`)
               .setImage(metadata.image_url);
 
             metadata.traits.forEach(function(trait){
