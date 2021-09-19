@@ -3,19 +3,12 @@ const { openseaAssetUrl } = require('../config.json');
 
 const Discord = require('discord.js');
 
-var lastTimestamp = null;
-var newTimestamp = null;
 
 module.exports = {
 	name: "mint",
 	execute(message) {
-        if (lastTimestamp == null) {
-            lastTimestamp = Math.floor(Date.now()/1000) - 120;
-          } else {
-            lastTimestamp -= 30;
-        let newTimestamp = Math.floor(Date.now()/1000) - 30;
 
-        let url = `${openseaEventsUrl}?collection_slug=${process.env.OPEN_SEA_COLLECTION_NAME}&event_type=transfer&only_opensea=false&offset=${offset}&limit=50&occurred_after=${lastTimestamp}&occurred_before=${newTimestamp}`;
+        let url = `${openseaEventsUrl}?collection_slug=${process.env.OPEN_SEA_COLLECTION_NAME}&event_type=transfer&only_opensea=false&offset=${offset}&limit=50`;
 
         let settings = { 
         method: "GET",
@@ -49,8 +42,7 @@ module.exports = {
         
                     message.channel.send(embedMsg);
                     };
-                })
-            })
-        }
+                });
+            });
     },
 };
