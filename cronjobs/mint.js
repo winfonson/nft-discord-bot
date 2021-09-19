@@ -43,7 +43,7 @@ module.exports = {
           }
   
           data.asset_events.forEach(function(event) {
-            if (event.asset && event.from_account.address == "0x0000000000000000000000000000000000000000") {
+            if (event.asset) {
               if (mintCache.includes(event.id)) {
                 return;
               } else {
@@ -55,9 +55,9 @@ module.exports = {
                 .setColor('#0099ff')
                 .setTitle(event.asset.name)
                 .setURL(event.asset.permalink)
-                .setDescription(`has just been minted!`)
+                .setDescription(`has just been transferred!`)
                 .setThumbnail(event.asset.image_url)
-                .addField("By", `[${event.to_account.user?.username || event.to_account.address.slice(0,8)}](https://etherscan.io/address/${event.to_account.address})`, true);
+                .addField("To", `[${event.to_account.user?.username || event.to_account.address.slice(0,8)}](https://etherscan.io/address/${event.to_account.address})`, true);
   
               client.channels.fetch(process.env.DISCORD_SALES_CHANNEL_ID)
                 .then(channel => {
