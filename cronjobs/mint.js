@@ -43,22 +43,20 @@ module.exports = {
           }
   
           data.asset_events.forEach(function(event) {
-            if (event.asset) {
+            if (event.asset && event.from_account.user.username == "NullAddress") {
               if (mintCache.includes(event.id)) {
                 return;
               } else {
                 mintCache.push(event.id);
                 if (mintCache.length > 200) mintCache.shift();
               }
-  
               const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`Dark Zodiac #${event.asset.token_id}`)
                 .setURL(event.asset.permalink)
-                .setDescription(`has just been transferred!`)
+                .setDescription(`has just been minted!`)
                 .setThumbnail(event.asset.image_url)
-                .addField("To", `[${event.to_account.user?.username || event.to_account.address.slice(0,8)}](https://etherscan.io/address/${event.to_account.address})`, true)
-                .addField("To", `[${event.from_account.user?.username || event.from_account.address.slice(0,8)}](https://etherscan.io/address/${event.from_account.address})`, true);
+                .addField("By", `[${event.to_account.user?.username || event.to_account.address.slice(0,8)}](https://etherscan.io/address/${event.to_account.address})`, true)
   
               client.channels.fetch(process.env.DISCORD_SALES_CHANNEL_ID)
                 .then(channel => {
